@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Homeway Property LTD{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="https://static.thenounproject.com/png/2389056-200.png" type="image/x-icon">
+{% endblock %}
+
+
+{% block h1 %}
+    <form style="display: flex; align-items: top; gap: 100px;">
+        <div>
+            <h1>Flat {{flat.flat_no}}, {{flat.building}} - Details</h1>
+            <hr>
+            {% if flat.kingsize_beds|add:"0" > 0 %} <!-- |add:"0" makes it integer-->
+                <h5>King-size Beds: {{flat.kingsize_beds}}</h5>
+            {% endif %}
+            {% if flat.double_beds|add:"0" > 0 %}
+                <h5>Double Beds: {{flat.double_beds}}</h5>
+            {% endif %}
+            {% if flat.sofa_beds|add:"0" > 0 %}
+                <h5>Sofa Beds: {{flat.sofa_beds}}</h5>
+            {% endif %}
+        </div>
+            <img src="{{ flat.photo_url }}" height="400">
+    </form>
+{% endblock %}
+
+{% block content %}
+    <h2>Maintenance Notes</h2>
+    <hr class="mt-3 mb-1">
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {% for note in flat.maintenance_notes_set.all %}
+            <button type="submit" class="{% if note.done %} btn-success {% else %} btn-danger {% endif %} text-white px-4 py-2 rounded btn border-0 padding-0 margin-0 width-150 height-100" name="edit_note" value="{{note.id}}">{{note}}</button>
+            <hr class="mt-3 mb-1">
+        {% endfor %}
+    </form>
+{% endblock %}
+<!-- <input type="checkbox" name="c{{note.id}}" {% if note.done %} checked {% endif %}> -->
+{% block footer %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success border-0 padding-0 margin-0" name="maintenance" value="{{flat.no}}-{{flat.building}}">Add Maintenance Note</button>
+        <button class="btn btn-success border-20 padding-5 margin-5 rounded-pill" type="submit" name="back" value="back">Back</button>
+    </form>
+{% endblock %}

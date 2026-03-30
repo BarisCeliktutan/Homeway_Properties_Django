@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}O Ses Türkiye{% endblock %}
+
+{% block icon %}
+<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxrgE_OFesO-TFuC0tG3wmykIxGl4RlHIoFA&s" type="image/x-icon">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Sezonlar</h1>
+    <img src="https://image.hurimg.com/i/hurriyet/75/0x0/679fe089bb4fc54cc16ebb45.jpg" height="350">
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="#" class="form-group">
+        {% csrf_token %}
+        {% for yil in yillar %}
+            <button class="btn btn-warning" type="submit" name="yil" value="{{yil.yil}}">{{yil.yil}}</button>
+        {% endfor %}
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <form method="post" action="#" class="form-group">
+        {% csrf_token %}
+        <button class="btn btn-success border-20 rounded-pill" type="submit" name="yeni" value="yeni">Yeni Sezon Ekle</button>
+    </form>
+{% endblock %}

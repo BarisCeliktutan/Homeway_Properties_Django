@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Todos Lists {% endblock %}
+
+{% block content %}
+    <h1>Todo List</h1>
+
+    <form method="post" action="#">
+        {% csrf_token %}
+        <ul>
+            {% for todo in user.todolist_set.all %}
+                <li>
+                    <button class="btn btn-outline-secondary border-0 padding-0 margin-0" type="submit" name="btn" value="{{todo.id}}">{{todo.name}}</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit" name="btn" value="/create/">Create New Todo List</button>
+    </form>
+{% endblock %}

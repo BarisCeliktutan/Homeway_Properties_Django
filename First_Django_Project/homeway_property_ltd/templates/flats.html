@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Homeway Property LTD - Flats{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="https://static.thenounproject.com/png/2389056-200.png" type="image/x-icon">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Homeway Propery LTD - Flats</h1>
+{% endblock %}
+
+{% load functions %}
+
+{% block content %}
+    <form method="post" action="#" class="form-group">
+        {% csrf_token %}
+        {% for flat in flats %}
+            {% with key=flat.flat_no|add:", "|add:flat.building %}
+                <button class="btn btn-warning" type="submit" name="flat" value="{{flat.flat_no}}-{{flat.building|underscore_spaces}}">
+                    <img src="{{ flat.photo_url }}" height="150">
+                    <p>Flat {{ flat.flat_no }}, {{ flat.building }}, {{ flat.post_code }}</p>
+                    <!-- <p style="color:brown">King: {{ flat.kingsize_beds }}, Double: {{ flat.double_beds }}, Sofa: {{ flat.sofa_beds }}</p> -->
+                </button>
+            {% endwith %}
+        {% endfor %}
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <form method="post" action="#"> <!-- class="form-group" -->
+        {% csrf_token %}
+        <button class="btn btn-success border-20 rounded-pill" type="submit" name="add_flat" value="add_flat">New Flat</button>
+        <button class="btn btn-success border-20 rounded-pill" type="submit" name="cleaners" value="cleaners">Cleaners</button>
+        <button class="btn btn-success border-20 rounded-pill" type="submit" name="schedule" value="schedule">Schedule</button>
+    </form>
+{% endblock %}

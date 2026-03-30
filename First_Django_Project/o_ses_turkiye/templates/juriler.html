@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}O Ses Türkiye {{yil.yil}}{% endblock %}
+
+{% block h1 %}
+{% endblock %}
+
+{% block icon %}
+<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxrgE_OFesO-TFuC0tG3wmykIxGl4RlHIoFA&s" type="image/x-icon">
+{% endblock %}
+
+{% block content %}
+    <h1>O Ses Türkiye {{yil.yil}} Jürileri</h1>
+
+    <form method="post" action="#">
+        {% csrf_token %}
+        {% for juri in yil.juri_set.all %}
+            <button type="submit" class="btn" name="juri" value="{{juri.name}}">
+            <img src="{{ juri.resim }}" height="260">
+            <hr>
+            {{juri.name}}
+            </button>
+        {% endfor %}
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {% if yil.juri_set.all|length < 4 %}
+            <button type="submit" class="btn btn-success border-0 padding-0 margin-0" name="juri_ekle" value="juri_ekle">Jüri Ekle</button>
+        {% endif %}
+        <button class="btn btn-success border-20 padding-5 margin-5 rounded-pill" type="submit" name="geri" value="geri">Sezonlara Dön</button>
+        <div>
+            <hr class="mt-2 mb-2">
+            {{form}}
+            <button class="btn btn-success border-20 padding-5 margin-5 rounded-pill" type="submit" name="ekle" value="ekle">Ekle</button>
+        </div>
+    </form>
+{% endblock %}

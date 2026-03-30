@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %} Create Todo Item {% endblock %}
+
+{% block content %}
+<h2>Create Page</h2>
+<form method="post" action="#" class="form-group">
+    {% csrf_token %}
+    <div class="mb-1 mt-2">
+        <div class="mb-1 mt-2">
+            {{form.as_p}} <!--  could be ".as_ul", ".as_table", ".as_p" -->
+        </div>
+    </div>
+    <button type="submit" name="save" class="btn btn-success">Save</button>
+</form>
+{% endblock %}

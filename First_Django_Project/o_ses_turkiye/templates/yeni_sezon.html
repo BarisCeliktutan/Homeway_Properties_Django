@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}O Ses Türkiye{% endblock %}
+
+{% block icon %}
+<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxrgE_OFesO-TFuC0tG3wmykIxGl4RlHIoFA&s" type="image/x-icon">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Yeni bir Sezon Ekle</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="#" class="form-group">
+        {% csrf_token %}
+        <div class="mb-1 mt-2">
+            <div class="mb-1 mt-2">
+                {{form.as_p}} <!--  could be ".as_ul", ".as_table", ".as_p" -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success border-20 padding-5 margin-5 rounded-pill" name="yil_ekle">Ekle</button>
+    </form>
+{% endblock %}

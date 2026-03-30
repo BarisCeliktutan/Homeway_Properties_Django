@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Homeway Property LTD{% endblock %}
+
+{% block h1 %}
+{% endblock %}
+
+{% block icon %}
+<link rel="icon" href="https://static.thenounproject.com/png/2389056-200.png" type="image/x-icon">
+{% endblock %}
+
+{% block content %}
+    <h1>Cleaners</h1>
+    <hr>
+    <div>
+        {% for cleaner in cleaners %}
+            <h4 style="color: rgba(173, 175, 22, 0.767);">{{cleaner.name}}</h4>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success border-0 padding-0 margin-0" name="add_cleaner" value="add_cleaner">Add New Cleaner</button>
+        <button class="btn btn-success border-20 padding-5 margin-5 rounded-pill" type="submit" name="back" value="back">Back</button>
+    </form>
+{% endblock %}

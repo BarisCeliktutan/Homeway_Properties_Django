@@ -1,0 +1,3 @@
+To create a new app, go to direction where manage.py is, and type this on terminal:
+
+python manage.py startapp "type app name without quotes"

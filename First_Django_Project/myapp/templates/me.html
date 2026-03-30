@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Barış Çeliktutan {% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="https://media.licdn.com/dms/image/v2/D4E03AQGz5LUqLXYIDw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722781588929?e=2147483647&v=beta&t=6S9AOPfTv0gprvsT5f4PzirJCtD9vu-DM9bSGHVxsDs" type="image/x-icon">
+{% endblock %}
+
+{% block h1 %}
+    <div>
+        <h1>Barış Çeliktutan</h1>
+        <h3>Software Engineer (to be...)</h3>
+    </div>
+{% endblock %}
+
+{% block content %}
+<img src="https://asset.epub.pub/epub/butcher-blackbird-by-brynne-weaver.epub/cover.jpeg" height="450">
+
+<form method="post" action="">
+        {% csrf_token %}
+        <div class="mt-3">
+            <a>I was at: </a>
+            <input type="text" name="was_at" value="{{how_many.was_at}}" style="text-align:center; width:150px">
+        </div>
+        <div class="mt-3">
+            <a>How many times: </a>
+            <input type="text" name="times" value="{{how_many.times}}" style="text-align:center; width:50px">
+        <div class="mt-3 ml-5">
+        </div>
+            <button type="submit" class="btn btn-success rounded-pill" name="start" value="start">Go to Where I Left of</button>
+        </div>
+    </form>
+{% endblock %}

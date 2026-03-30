@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %} Home Page {% endblock %}
+{% block content %}
+<h1>This is the home page</h1>
+<form>
+    {% csrf_token %}
+    <ul>
+        {% for key, val in data.items %}
+            <li>
+                {% if key == "1" %}
+                    <h3>{{val}} ehe</h3>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</form>
+{% endblock %}
