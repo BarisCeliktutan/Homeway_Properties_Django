@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-&qv9yy70%mf#8y90$!h(ohmbp8hj3yyo*=&%x7vi#ltfn#j)24
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.1.111", "192.168.1.205", "10.255.186.83", "127.0.0.1", "localhost", "*"]
+# ALLOWED_HOSTS = ["192.168.1.111", "192.168.1.205", "10.255.186.83", "127.0.0.1", "localhost", "*"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -134,5 +135,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
